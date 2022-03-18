@@ -19,9 +19,11 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
     'plugin:react-hooks/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react/recommended',
     'prettier'
   ],
   settings: {
@@ -31,6 +33,8 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
-    '@typescript-eslint/no-empty-function': 'off'
+    '@typescript-eslint/no-empty-function': 'off',
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off'
   }
 };

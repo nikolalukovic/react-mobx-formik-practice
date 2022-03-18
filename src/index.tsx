@@ -1,12 +1,18 @@
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { noop } from './infrastructure';
+import { AppHomePage } from './domain/app/pages';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppHomePage />
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -14,4 +20,4 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(process.env.NODE_ENV === 'development' ? console.log : () => {});
+reportWebVitals(process.env.NODE_ENV === 'development' ? console.log : noop);
