@@ -32,8 +32,8 @@ module.exports = {
     }
   },
   rules: {
-    'prettier/prettier': 'error',
     '@typescript-eslint/no-empty-function': 'off',
+    'prettier/prettier': 'error',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off'
   }
