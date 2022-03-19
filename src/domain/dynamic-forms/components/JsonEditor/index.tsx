@@ -1,5 +1,5 @@
 import Editor from '@monaco-editor/react';
-import { Alert, Box } from '@mui/material';
+import { Alert, Box, Button } from '@mui/material';
 import { useCallback, useRef, useState } from 'react';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import { useJsonFormsConfigurationContext } from '../../context/json-forms-configuration';
@@ -19,22 +19,22 @@ export const JsonEditor = () => {
     editorRef.current = editor;
   }
 
-  const handleOnValidate = useCallback(
-    (markers: monaco.editor.IMarker[]) => {
-      if (markers.length <= 0) {
-        if (editorRef.current) {
-          setJsonForms(editorRef.current.getValue());
-        }
-        setValidationState({ isValid: true });
-        return;
-      }
+  const handleOnValidate = useCallback((markers: monaco.editor.IMarker[]) => {
+    if (markers.length <= 0) {
+      setValidationState({ isValid: true });
+      return;
+    }
 
-      markers.forEach((marker: monaco.editor.IMarker) => {
-        setValidationState({ isValid: false, message: marker.message });
-      });
-    },
-    [setJsonForms]
-  );
+    markers.forEach((marker: monaco.editor.IMarker) => {
+      setValidationState({ isValid: false, message: marker.message });
+    });
+  }, []);
+
+  const handleOnSubmit = useCallback(() => {
+    if (editorRef.current) {
+      setJsonForms(editorRef.current.getValue());
+    }
+  }, [setJsonForms]);
 
   return (
     <Box sx={{ display: 'flex', height: '100%', width: '100%', flexFlow: 'column' }}>
@@ -43,6 +43,9 @@ export const JsonEditor = () => {
       ) : (
         <Alert severity="error">{validationState.message}</Alert>
       )}
+      <Button fullWidth disabled={!validationState.isValid} variant="contained" color="primary" onClick={handleOnSubmit}>
+        Submit
+      </Button>
       <Editor
         height="inherit"
         defaultLanguage="json"

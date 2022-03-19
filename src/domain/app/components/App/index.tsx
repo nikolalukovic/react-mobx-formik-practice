@@ -33,7 +33,7 @@ export const App = () => {
             <ListItemButton
               key="Formik dynamic forms"
               onClick={navToDynamicForms}
-              selected={isCurrentRoute(APP_NAVIGATION.DYNAMIC_FORMS)}
+              selected={isCurrentRoute(APP_NAVIGATION.DYNAMIC_FORMS) || isCurrentRoute('/')}
             >
               <ListItemText primary="Formik dynamic forms" />
             </ListItemButton>
