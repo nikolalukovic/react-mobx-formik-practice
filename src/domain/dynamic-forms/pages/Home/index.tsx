@@ -1,6 +1,6 @@
 import { Box, CssBaseline, Typography } from '@mui/material';
 import { useCallback, useState } from 'react';
-import { DynamicForms, JsonEditor } from '../../components';
+import { DynamicForms } from '../../components';
 import { defaultFormConfuguration } from '../../constants';
 import { JsonFormsConfigurationContext } from '../../context/json-forms-configuration';
 
@@ -20,7 +20,7 @@ const DynamicFormsHomePage = () => {
       <Box sx={{ display: 'flex', height: 'inherit', width: 'inherit', justifyContent: 'center', alignItems: 'center' }}>
         <JsonFormsConfigurationContext.Provider value={{ jsonForms, setJsonForms: handleJsonFormsChange }}>
           <DynamicForms />
-          <JsonEditor />
+          {/* <JsonEditor /> */}
         </JsonFormsConfigurationContext.Provider>
       </Box>
     </Box>

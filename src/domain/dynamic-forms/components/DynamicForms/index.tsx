@@ -1,16 +1,27 @@
 import { Box, Typography } from '@mui/material';
 import { useJsonFormsConfigurationContext } from '../../context/json-forms-configuration';
+import { emitDynamicForm } from './form';
 
 const DynamicForms = () => {
   const { jsonForms } = useJsonFormsConfigurationContext();
 
-  console.log('jsonForms rerender', jsonForms);
+  const DynamicForms = emitDynamicForm(jsonForms);
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <Typography variant="h3" component="div">
-        Dynamic Forms
+    <Box
+      sx={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        justifyContent: 'stretch',
+        alignItems: 'stretch',
+        flexFlow: 'column'
+      }}
+    >
+      <Typography variant="h6" component="div">
+        Dynamic
       </Typography>
+      <DynamicForms />
     </Box>
   );
 };
