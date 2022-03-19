@@ -1,6 +1,6 @@
 import { AppBar, Box, CssBaseline, Drawer, List, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import { APP_NAVIGATION } from '../../../../infrastructure/navigation/constants';
+import { appNavigation } from '../../../../infrastructure/navigation/constants';
 import { useAppNavigate, useIsCurrentRoute } from '../../../../infrastructure/navigation/hooks';
 
 const drawerWidth = 240;
@@ -33,11 +33,11 @@ export const App = () => {
             <ListItemButton
               key="Formik dynamic forms"
               onClick={navToDynamicForms}
-              selected={isCurrentRoute(APP_NAVIGATION.DYNAMIC_FORMS) || isCurrentRoute('/')}
+              selected={isCurrentRoute(appNavigation.dynamicForms.home)}
             >
               <ListItemText primary="Formik dynamic forms" />
             </ListItemButton>
-            <ListItemButton key="MobX arch" onClick={navToMobxArch} selected={isCurrentRoute(APP_NAVIGATION.MOBX_ARCHITECTURE)}>
+            <ListItemButton key="MobX arch" onClick={navToMobxArch} selected={isCurrentRoute(appNavigation.mobxArch.home)}>
               <ListItemText primary="MobX arch" />
             </ListItemButton>
           </List>
